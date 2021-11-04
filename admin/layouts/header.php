@@ -9,6 +9,11 @@
         die();
     }
 
+//    $roleId = getGet('id');
+//    if($roleId['role_id'] == 2) {
+//        header('Location: ../../index.php');
+//        die();
+//    }
 
 ?>
 

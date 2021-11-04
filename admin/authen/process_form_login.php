@@ -8,7 +8,8 @@ if (!empty(($_POST))) {
     $pwd = getSecurityMD5($pwd);
 
 
-    $userExist = excuteResult("select * from User where email = '$email' and password = '$pwd' and selected = 1", true);
+    $sql = "select * from User where email = '$email' and password = '$pwd' and deleted = 0";
+    $userExist = excuteResult($sql, true);
     if ($userExist == null) {
         // login fail
         $msg = 'Đăng nhập không thành công, vui lòng kiểm tra lại thông tin';

@@ -9,14 +9,14 @@ if($user == null) {
 }
 
 if(!empty($_POST)) {
-    updateStatus();
+
+    markRead();
 
 }
 
-function updateStatus() {
+function markRead() {
     $id = getPost('id');
-    $status = getPost('status');
-
-    $sql = "update Orders set status = $status where id = $id";
+    $updated_at = date("Y-m-d H:i:s");
+    $sql = "update Feedback set status = 1, updated_at = '$updated_at' where id = $id";
     excute($sql);
 }
