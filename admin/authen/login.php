@@ -6,10 +6,12 @@
     require_once('process_form_login.php');
 
     $user = getUserToken();
+
     if ($user != null) {
         header('Location: ../');
         die();
     }
+
 ?>
 
 <!DOCTYPE html>

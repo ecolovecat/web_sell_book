@@ -4,16 +4,21 @@
     require_once($baseUrl.'../database/dbhelper.php');
 
     $user = getUserToken();
+    var_dump($_SESSION['user']['role_id']);
     if($user == null) {
         header('Location: '.$baseUrl.'authen/login.php');
         die();
     }
-
+    if($_SESSION['user']['role_id'] != 1) {
+        header('Location: ../index.php');
+        die();
+    }
 //    $roleId = getGet('id');
 //    if($roleId['role_id'] == 2) {
 //        header('Location: ../../index.php');
 //        die();
 //    }
+
 
 ?>
 
@@ -45,7 +50,11 @@
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Name</a>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Tìm kiếm" aria-label="Search">
+
+    <form action=<?=$url?> method="get" style="width: 100%; height: 100%">
+        <input  class="form-control form-control-dark w-100" type="text" placeholder="Tìm kiếm" name="tukhoa" aria-label="Search">
+
+    </form>
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
             <a class="nav-link" href="<?=$baseUrl?>authen/logout.php">Đăng xuất</a>

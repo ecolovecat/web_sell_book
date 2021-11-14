@@ -15,9 +15,17 @@ if(isset($_GET['id'])) {
         $name = $data['name'];
     }
 }
+if(isset($_GET['tukhoa'])) {
+    $tukhoa = $_GET['tukhoa'];
+} else {
+    $tukhoa ='';
+}
 
-$sql = "select * from Category";
-$data = excuteResult($sql);
+$sql = "select * from Category where name like '%".$tukhoa."%'";
+$searchItems = excuteResult($sql);
+
+
+
 ?>
 
     <div class="row" style="margin-top: 20px;">
@@ -47,7 +55,7 @@ $data = excuteResult($sql);
                 <tbody>
                 <?php
                 $index = 0;
-                foreach($data as $item) {
+                foreach($searchItems as $item) {
                     echo '<tr>
 					<th>'.(++$index).'</th>
 					<td>'.$item['name'].'</td>

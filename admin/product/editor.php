@@ -1,6 +1,7 @@
 <?php
 $title = 'Thêm/Sửa Sản Phẩm';
 $baseUrl = '../';
+$url = '../product/search_product.php';
 require_once('../layouts/header.php');
 
 $id = $author = $thumbnail = $title = $price = $discount = $category_id = $description = '';

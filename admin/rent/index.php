@@ -1,8 +1,6 @@
 <?php
 $title = 'Quản Lý Đơn Hàng';
 $baseUrl = '../';
-$url = '../order/search_order.php';
-
 require_once('../layouts/header.php');
 
 //pending, approved, cancel

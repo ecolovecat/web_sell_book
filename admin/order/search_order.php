@@ -2,12 +2,20 @@
 $title = 'Quản Lý Đơn Hàng';
 $baseUrl = '../';
 $url = '../order/search_order.php';
-
 require_once('../layouts/header.php');
 
 //pending, approved, cancel
 $sql = "select * from Orders order by status asc, order_date desc";
 $data = excuteResult($sql);
+
+if(isset($_GET['tukhoa'])) {
+    $tukhoa = $_GET['tukhoa'];
+} else {
+    $tukhoa ='';
+}
+
+$sql = "select * from Orders where email like '%".$tukhoa."%' or phone_number like '%".$tukhoa."%'";
+$searchItems = excuteResult($sql);
 ?>
 
     <div class="row" style="margin-top: 20px;">
@@ -31,7 +39,7 @@ $data = excuteResult($sql);
                 <tbody>
                 <?php
                 $index = 0;
-                foreach($data as $item) {
+                foreach($searchItems as $item) {
                     echo '<tr>
 					<th>'.(++$index).'</th>
 					<td><a href="detail.php?id='.$item['id'].'">'.$item['fullname'].'</a></td>

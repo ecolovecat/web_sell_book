@@ -1,7 +1,9 @@
 <?php
     $baseUrl = '../';
     $title = "Quản Lý Người Dùng";
-    require_once('../layouts/header.php');
+$url = '../user/search_user.php';
+
+require_once('../layouts/header.php');
     $id = $msg = $fullname = $email = $phone_number = $address = $role_id = '';
     require_once ('form_save.php');
     $id = getGet('id');

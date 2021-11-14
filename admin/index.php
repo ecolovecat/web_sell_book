@@ -1,8 +1,9 @@
 <?php
-
     $title = "Dashboard";
     $baseUrl = '';
-    require_once('layouts/header.php');
+$url = '#';
+
+require_once('layouts/header.php');
 ?>
 
     <div class="row">

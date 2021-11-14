@@ -76,8 +76,8 @@
 <body>
 
 <!--Nav bar-->
-<div class="navv" style="position: relative">
-    <ul class="nav" style="margin-top: 0px !important; ">
+<div style="position:relative;">
+    <ul class="nav navbar-light bg-light " style="margin-top: 0px !important; ">
         <li class="nav-item" style="margin-top: 0px !important;padding: 0 !important; ;">
             <img src="https://i.pinimg.com/originals/7a/a4/de/7aa4debaef01c10536832ee61e9d50a7.png" alt="logo" width="70px">
         </li>
@@ -97,6 +97,11 @@
             <a class="nav-link" href="contact.php">Liên hệ</a>
         </li>
 
+        <li style="position: absolute; right: 0px">
+
+            <a class="nav-link" href="admin/authen/logout.php">Đăng xuất</a>
+        </li>
     </ul>
 </div>
+
 <!--End Nav bar-->

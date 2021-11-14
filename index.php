@@ -77,6 +77,7 @@ $lastestItems = excuteResult($sql);
 
 <!--Nav bar-->
 <div>
+    <div style="position:relative;">
     <ul class="nav navbar-light bg-light " style="margin-top: 0px !important; ">
         <li class="nav-item" style="margin-top: 0px !important;padding: 0 !important; ;">
             <img src="https://i.pinimg.com/originals/7a/a4/de/7aa4debaef01c10536832ee61e9d50a7.png" alt="logo" width="70px">
@@ -96,8 +97,11 @@ $lastestItems = excuteResult($sql);
         <li class="nav-item">
             <a class="nav-link" href="contact.php">Liên hệ</a>
         </li>
-
+        <li style="position: absolute; right: 0px">
+            <a class="nav-link" href="admin/authen/logout.php">Đăng xuất</a>
+        </li>
     </ul>
+    </div>
 
 <!--End Nav bar-->
 
@@ -146,10 +150,17 @@ $lastestItems = excuteResult($sql);
 
 <!--Lastest Product-->
 
+<div style="float: right" >
+    <form action="search.php" method="get">
+        <input type="text" placeholder="search" name="tukhoa" style="margin-top: 10px; width: 200px; height: 40px">
+        <input type="submit" name="timkiem" value="Tìm kiếm" style="height: 40px">
+    </form>
+
+</div>
 
 <div class="container">
-    <h1 style="text-align: center; margin-top: 20px; margin-bottom: 20px;">SẢN PHẨM MỚI NHẤT</h1>
-    <div class="row" style="margin-bottom: 100px">
+    <h1 style="text-align: center; margin-top: 70px; margin-bottom: 20px;">SẢN PHẨM MỚI NHẤT</h1>
+    <div class="row" style="margin-bottom: 100px; margin-top: 30px">
         <?php
         foreach($lastestItems as $item) {
             if ($item['deleted'] == 0) {
@@ -211,6 +222,11 @@ foreach ($menuItems as $item) {
 ?>
 
 <style>
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
     .nav {
         position: -webkit-sticky;
         position: sticky;

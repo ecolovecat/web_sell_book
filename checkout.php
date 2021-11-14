@@ -1,5 +1,6 @@
 <?php
 require_once('layout/header.php');
+
 ?>
     <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
         <form method="post" onsubmit="return completeCheckout();">
@@ -49,7 +50,9 @@ require_once('layout/header.php');
                         }
                         ?>
                     </table>
-                    <a href="checkout.php"><button class="btn btn-success" style="border-radius: 0px; font-size: 26px; width: 100%;">THANH TOÁN</button></a>
+                    <form action="complete.php" method="get">
+                        <a href="complete.php"><button class="btn btn-success" style="border-radius: 0px; font-size: 26px; width: 100%;">THANH TOÁN</button></a>
+                    </form>
                 </div>
             </div>
         </form>

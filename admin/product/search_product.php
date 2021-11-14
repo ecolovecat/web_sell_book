@@ -7,6 +7,15 @@ require_once('../layouts/header.php');
 
 $sql = "select Product.*, Category.name as category_name from Product left join Category on Product.category_id = Category.id where Product.deleted = 0";
 $data = excuteResult($sql);
+
+if(isset($_GET['tukhoa'])) {
+    $tukhoa = $_GET['tukhoa'];
+} else {
+    $tukhoa ='';
+}
+
+$sql = "select * from Product where title like '%".$tukhoa."%' or author like '%".$tukhoa."%'";
+$searchItems = excuteResult($sql);
 ?>
 
     <div class="row" style="margin-top: 20px;">
@@ -22,7 +31,7 @@ $data = excuteResult($sql);
                     <th>Thumbnail</th>
                     <th>Tên sản phẩm</th>
                     <th>Tác giả</th>
-                    <th>Danh mục</th>
+
                     <th>Giá</th>
                     <th style="width: 50px"></th>
                     <th style="width: 50px"></th>
@@ -31,13 +40,12 @@ $data = excuteResult($sql);
                 <tbody>
                 <?php
                 $index = 0;
-                foreach($data as $item) {
+                foreach($searchItems as $item) {
                     echo '<tr>
 					<th>'.(++$index).'</th>
 					<td><img src="'.$item['thumbnail'].'" style="height: 100px"/></td>
 					<td>'.$item['title'].'</td>
 					<td>'.$item['author'].'</td>
-					<td>'.$item['category_name'].'</td>
 					<td>'.number_format($item['discount']).'VND</td>
 					<td style="width: 50px">
 						<a href="editor.php?id='.$item['id'].'"><button class="btn btn-warning">Sửa</button></a>
