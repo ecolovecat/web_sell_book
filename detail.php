@@ -58,7 +58,7 @@ $lastestItems = excuteResult($sql);
                             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
                         </svg>
                     </li>
-                    <li style="margin-left: 20px; border-left: solid #dad7d7 1px; font-size: 13pt; padding-top: 3px; padding-left: 20px;">7,635 Đã Bán</li>
+                    <li style="margin-left: 20px; border-left: solid #dad7d7 1px; font-size: 13pt; padding-top: 3px; padding-left: 20px;">Còn hàng</li>
                 </ul>
                 <p style="font-size: 30px; color: red; margin-top: 15px; margin-bottom: 15px;">
                     <?=number_format($product['discount'])?> VND
@@ -79,11 +79,15 @@ $lastestItems = excuteResult($sql);
                 </button>
             </div>
             <div class="col-md-12" style="margin-top: 20px; margin-bottom: 30px;">
-                <h3>Chi Tiết Sản Phẩm</h3>
-                <?=$product['description']?>
+                <h1 class="display-4">Chi Tiết Sản Phẩm</h1>
+                <br>
+                <h4><?=$product['description']?></h4>
+
             </div>
+
         </div>
     </div>
+    <hr  width="50%" align="center" />
     <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
         <h1 style="text-align: center; margin-top: 20px; margin-bottom: 20px;">SẢN PHẨM LIÊN QUAN</h1>
         <div class="row">

@@ -4,7 +4,7 @@ $baseUrl = '../';
 $url = '../product/search_product.php';
 require_once('../layouts/header.php');
 
-$id = $author = $thumbnail = $title = $price = $discount = $category_id = $description = '';
+$id = $author = $thumbnail = $title = $price = $discount = $category_id = $description = $min_age = '';
 require_once('form_save.php');
 
 $id = getGet('id');
@@ -19,6 +19,7 @@ if($id != '' && $id > 0) {
         $category_id = $userItem['category_id'];
         $description = $userItem['description'];
         $author = $userItem['author'];
+        $min_age = $userItem['min_age'];
     } else {
         $id = 0;
     }
@@ -90,6 +91,10 @@ $categoryItems = excuteResult($sql);
                                 <div class="form-group">
                                     <label for="author">Tác giả:</label>
                                     <input required="true" type="text" class="form-control" id="author" name="author" value="<?=$author?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="min_age">Độ tuổi thích hợp:</label>
+                                    <input required="true" type="number" class="form-control" id="min_age" name="min_age" value="<?=$min_age?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="price">Giá:</label>

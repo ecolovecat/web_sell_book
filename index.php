@@ -3,6 +3,8 @@ session_start();
 require_once('utils/utility.php');
 require_once('database/dbhelper.php');
 
+$max_age = $min_age = 0;
+//var_dump($_GET);
 $sql = "select * from Category";
 $menuItems = excuteResult($sql);
 
@@ -39,7 +41,7 @@ $lastestItems = excuteResult($sql);
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <!--Important link from source https://bootsnipp.com/snippets/rlXdE-->
-
+    <link rel="stylesheet" href="/path/to/jquery-ui.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -107,7 +109,7 @@ $lastestItems = excuteResult($sql);
 
     <!--Slider-->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
+        <ol class="carousel-indicators" style="display: none">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
@@ -115,23 +117,23 @@ $lastestItems = excuteResult($sql);
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img height="500px" class="d-block w-100" src="https://images.squarespace-cdn.com/content/v1/5330a186e4b05c0d7e0a37ee/1504197307735-PQQVG6I97794TTRBN1AA/Slider+1+-+Book+Design+-+Book+Designer+-+Parke+Book+Creations.jpg?format=1500w"alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>...</h5>
-                    <p>...</p>
+                <div class="carousel-caption d-none d-md-block" style="background-color:rgba(0, 0, 0, 0.5); padding: 10px; margin-bottom: 30px">
+                    <h3>Một cuốn sách thực sự hay nên đọc trong tuổi trẻ, rồi đọc lại khi đã trưởng thành, và một nửa lúc tuổi già, giống như một tòa nhà đẹp nên được chiêm ngưỡng trong ánh bình minh, nắng trưa và ánh trăng.</h3>
+                    <p>Robertson Davies</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img height="500px" class="d-block w-100" src="https://s19499.pcdn.co/wp-content/uploads/2020/02/slider-istock-kindle-ebook-electronic-book-ebooks-ereader-e-reader-e-book-ereaders-kindles.jpg" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Test Carousel</h5>
-                    <p>Test Carousel</p>
+                <div class="carousel-caption d-none d-md-block" style="background-color:rgba(0, 0, 0, 0.5); padding: 10px; margin-bottom: 30px">
+                    <h3 style="opacity: 1">Những gì sách dạy chúng ta cũng giống như lửa. Chúng ta lấy nó từ nhà hàng xóm, thắp nó trong nhà ta, đem nó truyền cho người khác và nó trở thành tài sản của tất cả mọi người.</h3>
+                    <p>Voltaire</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img height="500px" class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHdrkk3pg4F2EaJ37QrJJgEQTFva-_117sdZlTzXfL9wr8zP5P3-vZCs5YOmW_8a1fR50&usqp=CAU" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>...</h5>
-                    <p>...</p>
+                <img height="500px" class="d-block w-100" src="https://sudospaces.com/luanvan1080-com/2019/04/thiet-ke-slide-powerpoint-chuyen-nghiep-1.jpg" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block" style="background-color:rgba(0, 0, 0, 0.5); padding: 10px; margin-bottom: 30px">
+                    <h3>Tất cả những gì con người làm, nghĩ hoặc trở thành được bảo tồn một cách kỳ diệu trên những trang sách.</h3>
+                    <p>Thomas Carlyle</p>
                 </div>
             </div>
         </div>
@@ -146,7 +148,23 @@ $lastestItems = excuteResult($sql);
     </div>
     <!--End Slider-->
 </div>
+<!--Price range-->
+    <h3 style="margin-top: 20px; text-align: center">Tìm kiếm theo độ tuổi</h3>
+    <div class="range-slider" style="margin-top: 20px">
 
+        <form action="index_age.php" method="get">
+            <span>
+                <input type="number" value="5" min="0" max="100" id="min_age" name="min_age"/>
+                <input type="number" value="50" min="0" max="100" id="max_age" name="max_age"/>
+	        </span>
+            <input value="5" min="0" max="100" step="1" type="range"/>
+            <input value="50" min="0" max="100" step="1" type="range"/>
+            <input type="submit" value="submit">
+        </form>
+
+</div>
+
+<!--End price range-->
 
 <!--Lastest Product-->
 
@@ -157,6 +175,9 @@ $lastestItems = excuteResult($sql);
     </form>
 
 </div>
+
+
+
 
 <div class="container">
     <h1 style="text-align: center; margin-top: 70px; margin-bottom: 20px;">SẢN PHẨM MỚI NHẤT</h1>
@@ -221,6 +242,62 @@ foreach ($menuItems as $item) {
     require_once ('layout/footer.php');
 ?>
 
+<script>
+    (function() {
+
+        var parent = document.querySelector(".range-slider");
+        if(!parent) return;
+
+        var
+            rangeS = parent.querySelectorAll("input[type=range]"),
+            numberS = parent.querySelectorAll("input[type=number]");
+
+        rangeS.forEach(function(el) {
+            el.oninput = function() {
+                var slide1 = parseFloat(rangeS[0].value),
+                    slide2 = parseFloat(rangeS[1].value);
+
+                if (slide1 > slide2) {
+                    [slide1, slide2] = [slide2, slide1];
+                    // var tmp = slide2;
+                    // slide2 = slide1;
+                    // slide1 = tmp;
+                }
+
+                numberS[0].value = slide1;
+                numberS[1].value = slide2;
+            }
+        });
+
+        numberS.forEach(function(el) {
+            el.oninput = function() {
+                var number1 = parseFloat(numberS[0].value),
+                    number2 = parseFloat(numberS[1].value);
+
+                if (number1 > number2) {
+                    var tmp = number1;
+                    numberS[0].value = number2;
+                    numberS[1].value = tmp;
+                }
+
+                rangeS[0].value = number1;
+                rangeS[1].value = number2;
+
+            }
+        });
+
+    })();
+    function test() {
+        var min1 = document.getElementById("min_age").value;
+        var max1 = document.getElementById("max_age").value;
+        document.cookie="min_age_js="+min1;
+        document.cookie="max_age_js="+max1;
+
+    }
+
+
+</script>
+
 <style>
     .clearfix::after {
         content: "";
@@ -242,5 +319,136 @@ foreach ($menuItems as $item) {
     }
     .navbar-custom {
         background: none;
+    }
+
+    .range-slider {
+        width: 300px;
+        margin: auto;
+        text-align: center;
+        position: relative;
+        height: 6em;
+    }
+
+    .range-slider svg,
+    .range-slider input[type=range] {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+    input[type=number] {
+        border: 1px solid #ddd;
+        text-align: center;
+        font-size: 1.6em;
+        -moz-appearance: textfield;
+    }
+
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type=number]:invalid,
+    input[type=number]:out-of-range {
+        border: 2px solid #ff6347;
+    }
+
+    input[type=range] {
+        -webkit-appearance: none;
+        width: 100%;
+    }
+
+    input[type=range]:focus {
+        outline: none;
+    }
+
+    input[type=range]:focus::-webkit-slider-runnable-track {
+        background: #2497e3;
+    }
+
+    input[type=range]:focus::-ms-fill-lower {
+        background: #2497e3;
+    }
+
+    input[type=range]:focus::-ms-fill-upper {
+        background: #2497e3;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 5px;
+        cursor: pointer;
+        animate: 0.2s;
+        background: #2497e3;
+        border-radius: 1px;
+        box-shadow: none;
+        border: 0;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        z-index: 2;
+        position: relative;
+        box-shadow: 0px 0px 0px #000;
+        border: 1px solid #2497e3;
+        height: 18px;
+        width: 18px;
+        border-radius: 25px;
+        background: #a1d0ff;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -7px;
+    }
+
+    input[type=range]::-moz-range-track {
+        width: 100%;
+        height: 5px;
+        cursor: pointer;
+        animate: 0.2s;
+        background: #2497e3;
+        border-radius: 1px;
+        box-shadow: none;
+        border: 0;
+    }
+
+    input[type=range]::-moz-range-thumb {
+        z-index: 2;
+        position: relative;
+        box-shadow: 0px 0px 0px #000;
+        border: 1px solid #2497e3;
+        height: 18px;
+        width: 18px;
+        border-radius: 25px;
+        background: #a1d0ff;
+        cursor: pointer;
+    }
+
+    input[type=range]::-ms-track {
+        width: 100%;
+        height: 5px;
+        cursor: pointer;
+        animate: 0.2s;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+    }
+
+    input[type=range]::-ms-fill-lower,
+    input[type=range]::-ms-fill-upper {
+        background: #2497e3;
+        border-radius: 1px;
+        box-shadow: none;
+        border: 0;
+    }
+
+    input[type=range]::-ms-thumb {
+        z-index: 2;
+        position: relative;
+        box-shadow: 0px 0px 0px #000;
+        border: 1px solid #2497e3;
+        height: 18px;
+        width: 18px;
+        border-radius: 25px;
+        background: #a1d0ff;
+        cursor: pointer;
     }
 </style>

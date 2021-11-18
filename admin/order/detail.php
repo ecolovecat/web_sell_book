@@ -1,6 +1,7 @@
 <?php
 $title = 'Thông Tin Chi Tiết Đơn Hàng';
 $baseUrl = '../';
+$url ="#";
 require_once('../layouts/header.php');
 
 $orderId = getGet('id');
